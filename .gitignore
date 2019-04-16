@@ -102,3 +102,12 @@ venv.bak/
 
 # mypy
 .mypy_cache/
+
+# vscode configurations/
+.vscode/
+
+# media directory
+media/
+
+# secret informations
+.secret.json
