@@ -1,4 +1,6 @@
 import os
+import json
+from django.core.exceptions import ImproperlyConfigured
 
 
 
@@ -6,11 +8,24 @@ import os
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
+# Read json-file that contain secret informations
+with open(os.path.join(BASE_DIR, '.secret.json')) as f:
+    secrets = json.loads(f.read())
+
+# get secret information
+def get_secret_setting(setting, secrets=secrets):
+    try:
+        return secrets[setting]
+    except KeyError:
+        raise ImproperlyConfigured("Set the {} setting".format(setting))
+
+
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'j5v*uy#4og%09u)#av$cw6!yf0k%hvt-vfi8=w%63as01n70jv'
+SECRET_KEY = get_secret_setting('secret_key')
+
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -68,8 +83,12 @@ WSGI_APPLICATION = 'myapi.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': get_secret_setting('db_name'),
+        'USER': get_secret_setting('username'),
+        'PASSWORD': get_secret_setting('password'),
+        'HOST': get_secret_setting('host'),
+        'PORT': get_secret_setting('port'),
     }
 }
 
