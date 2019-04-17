@@ -1,7 +1,7 @@
 # CRUD
 a (Create, Retrieve, Update and Delete) api implementation
-<br/>
-<br/>
+
+
 ### Endpoints:
 | #  | url                             | method | description                   | authorization |
 |----|---------------------------------|--------|-------------------------------|---------------|
@@ -17,7 +17,8 @@ a (Create, Retrieve, Update and Delete) api implementation
 | 10 | /api/category/{category_id}/ads | GET    | find ads by given category_id | YES           |
 | 11 | /api/users                      | GET    | list of users                 | YES           |
 | 12 | /api/user/{user_id}/ads         | GET    | find ads by given user_id     | YES           |
-<br/>
+
+
 ### Authorization:
 
 ##### curl
