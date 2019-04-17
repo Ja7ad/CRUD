@@ -19,6 +19,9 @@ class UserCreateSerializer(serializers.ModelSerializer):
             'email', 'username', 'password',
         )
         read_only_fields = ('id',)
+        extra_kwargs = {
+            'password': {'write_only': True}
+        }
 
     def create(self, validated_data):
         password = validated_data.pop('password')
