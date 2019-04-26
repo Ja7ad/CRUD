@@ -9,7 +9,7 @@ a (Create, Retrieve, Update and Delete) api implementation
 | 2  | /api/accounts/signup            | POST   | signup with api               | NO            |
 | 3  | /api/accounts/signin            | POST   | obtain your Token             | NO            |
 | 4  | /api/ads                        | GET    | list of ads                   | YES           |
-| 5  | /api/ads                        | POST   | create new ads                | YES           |
+| 5  | /api/ads                        | POST   | create new ad                 | YES           |
 | 6  | /api/ad/{ad_id}                 | GET    | get ad by given ad_id         | YES           |
 | 7  | /api/ad/{ad_id}                 | PUT    | update ad by given ad_id      | YES           |
 | 8  | /api/ad/{ad_id}                 | DELETE | delete ad by given ad_id      | YES           |
